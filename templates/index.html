@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>TypeSe</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="{{ url_for('static', path='css/styles.css') }}">
@@ -14,9 +14,15 @@
     </script>
 </head>
 <body>
+
     <div class="content">
+        <header class="item header">
+            <div class="header-login header-item">login</div>
+            <div class="header-logo header-item">LOGO!</div>
+            <div class="header-3 header-item">3</div>
+        </header>
         <div class="item select-language">
-            <form action="/type">
+            <form action="/select_language">
                 <select class="lang" name="lang">
                     <option value="eng" {% if lang == 'eng' %}selected='selected'{% endif %}>Eng</option>
                     <option value="rus" {% if lang == 'rus' %}selected='selected'{% endif %}>Rus</option>
@@ -27,7 +33,7 @@
             {{ text }}
         </div>
     <div class="item container-right" id="container-right"></div>
-    
+    <footer class="item footer"><a href="https://github.com/placese/typese">open source</a><p class="year">2022</p></footer>
 
     </div>
 </body>

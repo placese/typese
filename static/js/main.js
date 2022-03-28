@@ -9,11 +9,12 @@ document.addEventListener("DOMContentLoaded", function() {
     let miss_counter = 0;
     let is_time_started_flag = false;
     changeLang.addEventListener('change', async (event) => {
-
+        let langg = new FormData(document.querySelector('form'));
         let response = await fetch('/select_language', {
             method: 'POST',
-            body: new FormData(document.querySelector('form'))
+            body: langg
         })
+        location.href = location.origin + location.pathname +`?lang=${langg.get("lang")}`;
         let response_text = await response.text();
         let parser = new DOMParser();
         let doc = parser.parseFromString(response_text, 'text/html');
@@ -32,6 +33,8 @@ document.addEventListener("DOMContentLoaded", function() {
                     'F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9', 'F10', 'F11', 'F12']
     let start_time = new Date().getTime();
     document.addEventListener('keydown', (keyEvent) => {
+        if (type_counter != current_text.length) {
+
         if (is_time_started_flag == false) {
             start_time = new Date().getTime();
             is_time_started_flag = true;
@@ -53,10 +56,8 @@ document.addEventListener("DOMContentLoaded", function() {
         if (type_counter == current_text.length) {
             let end_time = new Date().getTime() - start_time
             end_time = new Date(end_time);
-            // console.log(typeof(end_time))
             let time_spend = end_time.getMinutes() * 60 + end_time.getSeconds();
 
-            
             document.getElementById("container-right").innerHTML = 
             `Accuracy: ${Math.round((((type_counter - miss_counter) / type_counter) * 100), -2)}%<br>
              SPM: ${Math.round(type_counter/time_spend*60)}<br>
@@ -64,6 +65,7 @@ document.addEventListener("DOMContentLoaded", function() {
             `;
         }
            
+    }
         
     })
 

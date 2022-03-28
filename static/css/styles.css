@@ -1,19 +1,33 @@
 body {
     background-color: #2E303E;
     font-family: 'Anonymous Pro', monospace;
-    display: flex;
-    /* align-items: center; */
-    justify-content: space-around;
-    color: white;
+    
 }
+.content {
+    /* display: flex; */
+    /* align-items: center; */
+    /* justify-content: space-around; */
+    color: white;
+
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-gap: 10px;
+}
+/* .item { */
+    /* border: solid 1px white; */
+/* } */
 .text-block {
     margin-top: 200px;
     /* display: flex; */
     /* flex-direction: column; */
     color: white;
-    align-items: stretch;
+    /* align-items: stretch; */
+    justify-self: center;
     max-width: 600px;
     min-width: 600px;
+}
+.select-language {
+    justify-self: right;
 }
 .container-right {
     flex-shrink: 4;

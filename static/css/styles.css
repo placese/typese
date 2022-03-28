@@ -2,8 +2,8 @@ body {
     background-color: #2E303E;
     font-family: 'Anonymous Pro', monospace;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    /* align-items: center; */
+    justify-content: space-around;
     color: white;
 }
 .text-block {
@@ -13,6 +13,10 @@ body {
     color: white;
     align-items: stretch;
     max-width: 600px;
+    min-width: 600px;
+}
+.container-right {
+    flex-shrink: 4;
 }
 p {
     margin: auto;
@@ -20,6 +24,7 @@ p {
     height: 10px;
 }
 select {
+    padding-right: 0px;
     /* // A reset of styles, including removing the default dropdown arrow */
     appearance: none;
     /* // Additional resets for further consistency */
@@ -55,5 +60,6 @@ select:focus + .focus {
     border-radius: inherit;
 }
 font {
-    background-color: #BCAFFF;
+    /* background-color: #BCAFFF; */
+    color: #AD8315;
 }

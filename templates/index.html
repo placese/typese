@@ -18,13 +18,16 @@
     <div class="select-language">
         <form action="/type">
             <select class="lang" name="lang">
-                <option value="eng">Eng</option>
-                <option value="rus">Rus</option>
+                <option value="eng" {% if lang == 'eng' %}selected='selected'{% endif %}>Eng</option>
+                <option value="rus" {% if lang == 'rus' %}selected='selected'{% endif %}>Rus</option>
             </select>
         </form>
     </div>
     <div class="text-block" id="text-block">
         {{ text }}
+    </div>
+    <div class="container-right" id="container-right">
+
     </div>
 </body>
 </html>

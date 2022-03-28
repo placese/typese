@@ -27,7 +27,7 @@ async def type(request: Request, lang: Optional[str] = 'eng'):
         text = random.choice(texts_russian)
     else:
         text = random.choice(texts_english)
-    return templates.TemplateResponse("index.html", {"request": request, "text": text.replace("\n", " ")})
+    return templates.TemplateResponse("index.html", {"request": request, "text": text.replace("\n", " "), "lang": lang})
 
 @app.post('/select_language')
 async def select_language(request: Request, lang: str = Form('eng')):

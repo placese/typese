@@ -43,7 +43,7 @@ texts_russian = [
 
 texts_english = [
 """
-All I want is nothing more,
+All I want is nothing more, 
 to hear you knocking at my door.
 'Cause if I could see your face once more,
 I could die as a happy man I'm sure.

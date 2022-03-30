@@ -8,13 +8,14 @@ document.addEventListener("DOMContentLoaded", function() {
     let type_counter = 0;
     let miss_counter = 0;
     let is_time_started_flag = false;
+    let langg = new FormData(document.querySelector('form'));
     changeLang.addEventListener('change', async (event) => {
-        let langg = new FormData(document.querySelector('form'));
+        langg = new FormData(document.querySelector('form'));
+        console.log(langg.get("lang"))
         let response = await fetch('/select_language', {
             method: 'POST',
             body: langg
         })
-        location.href = location.origin + location.pathname +`?lang=${langg.get("lang")}`;
         let response_text = await response.text();
         let parser = new DOMParser();
         let doc = parser.parseFromString(response_text, 'text/html');
@@ -25,10 +26,10 @@ document.addEventListener("DOMContentLoaded", function() {
         type_counter = 0;
         miss_counter = 0;
         is_time_started_flag = false;
+    
+          
     });
 
-    
-    
     let excludes = ['Shift', 'Alt', '\`', 'Control', 'CapsLock', 'NumLock', 'Escape', 'Tab', 'GroupNext', 'Backspace',
                     'F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9', 'F10', 'F11', 'F12']
     let start_time = new Date().getTime();

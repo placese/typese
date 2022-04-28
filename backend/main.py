@@ -50,7 +50,7 @@ templates = Jinja2Templates(directory='templates')
 
 
 @app.get("/type", response_class=HTMLResponse)
-async def type_main(request: Request, lang: str = Query('eng')):
+async def type_main(request: Request, lang: str = Query('eng')) -> str:
     """
     later
     """
@@ -68,12 +68,13 @@ async def type_main(request: Request, lang: str = Query('eng')):
     
 
 @app.post('/select_language')
-async def select_language(request: Request, lang: str = Form('eng')):
+async def select_language(request: Request, lang: str = Form('eng')) -> str:
     return await type_main(request=request, lang=lang)
 
 
 @app.post('/register/', response_model=schemas.User)
-async def register(user: schemas.UserCreate, db: Session = Depends(get_db)):
+def register(user: schemas.UserCreate, db: Session = Depends(get_db)) -> schemas.User:
+    
     if crud.get_user_by_email(db=db, user_email=user.email):
         raise HTTPException(
             status_code=status.HTTP_409_CONFLICT,
